@@ -1,0 +1,145 @@
+Parte 1
+Sector universal.
+* {
+  box-sizing: border-box;
+}
+
+/* Herencia base: tipografía, color de texto y fondo que heredan los descendientes.*/
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: #1e293b;
+  background-color: #f8fafc;
+}
+
+Parte 2
+
+/* Regla externa para .caja-abuelos (se compara con <style> y style="" del HTML) */
+.caja-abuelos {
+  background-color: #dbeafe;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+/*Preguntas de reflexión:
+¿Qué color de fondo muestra el navegador para .caja-abuelos y por qué?
+
+Muestra el color definido en el atributo style="" del elemento porque
+entre <style> y el archivo externo, con igual especificidad (.caja-abuelos),
+gana el que aparece después en el código (el orden de <link> y <style>).
+El #dbeafe de este archivo solo se vería si no hubiera estilo en línea
+ni otra regla posterior que lo sustituyera.
+
+¿Qué pasaría si añadieras !important al archivo externo?
+
+Con background-color: #dbeafe !important; el fondo pasaría a ser #dbeafe,
+porque una declaración !important en una hoja de estilos se sobrepone a una
+declaración normal del atributo <style>.*/
+
+Parte 3
+
+/* Cabecera: texto centrado, blanco, sobre fondo azul oscuro */
+#cabecera {
+  text-align: center;
+  color: #ffffff;
+  background-color: #0f172a;
+  padding: 20px;
+}
+
+/* Menú horizontal sin Flexbox: los <li> pasan a comportarse como inline-block */
+.menu li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+/* Contenedor principal: 85% de ancho, máximo 900px y centrado horizontalmente */
+#contenido {
+  width: 85%;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+/* Tarjetas: fondo blanco, borde sólido, padding y separación inferior */
+.ficha {
+  background-color: #ffffff;
+  border: 2px solid #cbd5e1;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Etiqueta en línea con propiedades de caja (inline-block permite padding vertical real) */
+.etiqueta-inline {
+  display: inline-block;
+  background-color: #e2e8f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+Parte 4
+
+/* Descendente: enlaces dentro de <nav> sin subrayado, blancos y con padding */
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 8px 12px;
+}
+
+/* Hijo directo: solo la <section> que cuelga directamente de #contenido */
+#contenido > section {
+  background-color: #ffffff;
+  padding: 25px;
+}
+
+/* Hermano adyacente: solo el párrafo inmediatamente posterior a un <h2> */
+h2 + p {
+  font-weight: bold;
+  color: #0284c7;
+}
+
+/* Hermanos generales: todos los párrafos posteriores a un <h2> (mismo padre) */
+h2 ~ p {
+  font-size: 1.05rem;
+}
+
+Parte 5
+
+/* Enlaces que se abren en una pestaña nueva */
+a[target="_blank"] {
+  color: #15803d;
+  font-weight: bold;
+}
+
+/* Enlaces que apuntan a un archivo PDF (href termina en .pdf) */
+a[href$=".pdf"] {
+  color: #b91c1c;
+}
+
+
+Parte 6
+/* Interacción: al pasar el ratón por los enlaces del menú */
+nav a:hover {
+  background-color: #334155;
+  border-radius: 6px;
+}
+
+/* Estructural: la última tarjeta sin margen inferior y con borde izquierdo grueso */
+.ficha:last-child {
+  margin-bottom: 0;
+  border-left: 6px solid #0284c7;
+}
+
+/* Pseudo-elemento: flecha antes de los títulos de las fichas */
+.ficha h3::before {
+  content: "▸ ";
+  color: #0284c7;
+}
+
+/* Pseudo-elemento: etiqueta visual [PDF] después de los enlaces a PDF */
+a[href$=".pdf"]::after {
+  content: " [PDF]";
+}
+
+/* Pseudo-elemento: primera letra del párrafo .intro más grande y de color */
+.intro::first-letter {
+  font-size: 1.5rem;
+  color: #0284c7;
+}
